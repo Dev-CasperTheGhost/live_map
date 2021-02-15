@@ -1,35 +1,38 @@
 {
-    "env": {
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018
-    },
-    "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-console": "off",
-        "no-undef": "off"
-    }
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "GetConvarInt": "readonly",
+    "GetConvar": "readonly",
+    "onNet": "readonly",
+    "GetPlayerName": "readonly",
+    "GetCurrentResourceName": "readonly",
+    "GetPlayerFromIndex": "readonly",
+    "GetNumPlayerIndices": "readonly",
+    "GetPlayerIdentifier": "readonly",
+    "source": "writable",
+    "on": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "no-multi-spaces": ["error"],
+    "eqeqeq": ["warn", "always"],
+    "no-unused-vars": ["error"],
+    "no-duplicate-case": ["error"],
+    "no-extra-semi": ["error"],
+    "no-unreachable": ["error"],
+    "default-case": ["warn"],
+    "default-case-last": ["error"],
+    "no-useless-catch": ["warn"]
+  }
 }

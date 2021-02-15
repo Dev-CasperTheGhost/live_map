@@ -21,7 +21,6 @@
         "koa": "^2.7.0",
         "koa-body": "^4.1.0",
         "koa-router": "^10.0.0",
-        "simple-console-logger": "^2.0.2",
         "socket.io": "^3.0.4",
         "webpack": "^5.11.0",
         "ws": "^7.0.0"

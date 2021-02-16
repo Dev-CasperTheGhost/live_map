@@ -23,4 +23,5 @@ exports {
 
 server_scripts {
     "dist/livemap.js",
+    "server/version_check.lua"
 }

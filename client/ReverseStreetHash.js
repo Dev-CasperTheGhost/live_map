@@ -471,16 +471,12 @@ exports(
       hash = String(hash);
     }
 
-    console.log(`HASH-1, ${OTHER_STREET_HASHES["0x96b41893"]}`);
-    console.log(`HASH_2 ${hash}`);
     const name = STREET_HASHES[hash];
-    console.log(`#NAME-${name}`);
 
     if (name) {
       return name;
     } else {
       const backup = OTHER_STREET_HASHES[hash];
-      console.log(`#NAME-${backup}`);
       if (backup) {
         return backup;
       }

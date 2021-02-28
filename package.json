@@ -1,7 +1,7 @@
 {
     "name": "fivem-live_map",
     "version": "0.0.1",
-    "description": "The FiveM resource to get Havoc's LiveMap working#",
+    "description": "The FiveM resource to get Havoc's LiveMap working",
     "main": "src/server.js",
     "scripts": {
         "lint": "eslint ./src/**/*"
@@ -17,9 +17,12 @@
     },
     "homepage": "https://github.com/Dev-CasperTheGhost/live_map#readme",
     "dependencies": {
+        "@citizenfx/client": "^1.0.3573-1",
+        "@citizenfx/server": "^1.0.3573-1",
         "koa": "^2.7.0",
         "koa-body": "^4.1.0",
         "koa-router": "^10.0.0",
+        "node-fetch": "^2.6.1",
         "socket.io": "^3.0.4",
         "webpack": "^5.11.0",
         "ws": "^7.0.0"

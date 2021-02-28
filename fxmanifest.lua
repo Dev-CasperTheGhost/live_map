@@ -7,21 +7,21 @@ dependency 'webpack'
 webpack_config 'webpack.config.js'
 
 client_scripts {
-    "client/client.lua",
-    "client/reverse_weapon_hashes.lua",
-    "client/reverse_car_hashes.lua",
-    "client/reverse_location_hashes.lua",
+    "client/client.js",
+    "client/ReverseStreetHash.js",
+    "client/ReverseZoneHash.js",
+    "client/ReverseVehicleHash.js",
+    "client/ReverseWeaponHash.js",
 }
 
 exports {
-    "reverseWeaponHash",
-    "reverseVehicleHash",
-    "reverseStreetHash",
-    "reverseZoneHash",
-    "reverseAreaHash"
+   "ReverseStreetHash",
+   "ReverseZoneHash",
+   "ReverseWeaponHash",
+   "ReverseVehicleHash"
 }
 
 server_scripts {
     "dist/livemap.js",
-    "server/version_check.lua"
+    "server/version.js"
 }

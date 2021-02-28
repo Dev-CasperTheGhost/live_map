@@ -5,7 +5,7 @@ const EventsWrapper = (SocketController) => {
   };
 
   onNet("onResourceStart", (name) => {
-    if (name == GetCurrentResourceName()) {
+    if (name.toLowerCase() === GetCurrentResourceName().toLowerCase()) {
       if (GetNumPlayerIndices() !== 0) {
         console.info("LIVE_MAP: Players on the server... Initializing them");
         for (let i = 0; i < GetNumPlayerIndices(); i++) {
@@ -20,16 +20,16 @@ const EventsWrapper = (SocketController) => {
     setStaticData(source, GetPlayerIdentifier(source));
   });
 
-  onNet("livemap:AddPlayerData", (k, d) => {
-    SocketController.AddPlayerData(GetPlayerIdentifier(source, 0), k, d);
+  onNet("livemap:AddPlayerData", (key, data) => {
+    SocketController.AddPlayerData(GetPlayerIdentifier(source, 0), key, data);
   });
 
-  onNet("livemap:UpdatePlayerData", (k, d) => {
-    SocketController.UpdatePlayerData(GetPlayerIdentifier(source, 0), k, d);
+  onNet("livemap:UpdatePlayerData", (key, data) => {
+    SocketController.UpdatePlayerData(GetPlayerIdentifier(source, 0), key, data);
   });
 
-  onNet("livemap:RemovePlayerData", (k) => {
-    SocketController.RemovePlayerData(GetPlayerIdentifier(source, 0), k);
+  onNet("livemap:RemovePlayerData", (key) => {
+    SocketController.RemovePlayerData(GetPlayerIdentifier(source, 0), key);
   });
 
   onNet("livemap:RemovePlayer", () => {
@@ -41,16 +41,16 @@ const EventsWrapper = (SocketController) => {
   });
 
   // Internal events for server-side scripts. See https://github.com/TGRHavoc/live_map/issues/45
-  on("livemap:internal_AddPlayerData", (id, k, d) => {
-    SocketController.AddPlayerData(id, k, d);
+  on("livemap:internal_AddPlayerData", (id, key, data) => {
+    SocketController.AddPlayerData(id, key, data);
   });
 
-  on("livemap:internal_UpdatePlayerData", (id, k, d) => {
-    SocketController.UpdatePlayerData(id, k, d);
+  on("livemap:internal_UpdatePlayerData", (id, key, data) => {
+    SocketController.UpdatePlayerData(id, key, data);
   });
 
-  on("livemap:internal_RemovePlayerData", (id, k) => {
-    SocketController.RemovePlayerData(id, k);
+  on("livemap:internal_RemovePlayerData", (id, key) => {
+    SocketController.RemovePlayerData(id, key);
   });
 
   on("livemap:internal_RemovePlayer", (id) => {

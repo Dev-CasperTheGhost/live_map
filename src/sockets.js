@@ -34,7 +34,7 @@ const SocketController = (access) => {
   };
 
   const SendPlayerData = () => {
-    if (websocketServer == null) return;
+    if (!websocketServer) return;
 
     let payload = [];
     for (let identifier in playerData) {

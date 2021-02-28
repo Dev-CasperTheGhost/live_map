@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@citizenfx/client/natives_universal.d.ts" />
+/// <reference path="../../node_modules/@citizenfx/client/natives_universal.d.ts" />
 const WEAPON_HASHES = {
   ["2578778090"]: "Knife",
   ["1737195953"]: "Nightstick",

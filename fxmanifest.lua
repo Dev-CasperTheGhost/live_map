@@ -8,10 +8,10 @@ webpack_config 'webpack.config.js'
 
 client_scripts {
     "client/client.js",
-    "client/ReverseStreetHash.js",
-    "client/ReverseZoneHash.js",
-    "client/ReverseVehicleHash.js",
-    "client/ReverseWeaponHash.js",
+    "client/functions/ReverseStreetHash.js",
+    "client/functions/ReverseZoneHash.js",
+    "client/functions/ReverseVehicleHash.js",
+    "client/functions/ReverseWeaponHash.js",
 }
 
 exports {

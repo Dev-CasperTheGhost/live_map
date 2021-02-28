@@ -2,24 +2,22 @@ const webpack = require("webpack");
 const path = require("path");
 
 const config = {
-    entry: "./src/server.js",
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "livemap.js"
+  entry: "./src/server.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "livemap.js",
+  },
+  resolve: {
+    alias: {
+      LivemapSocketController: path.resolve(__dirname, "src", "sockets.js"),
+      LivemapEventsWrapper: path.resolve(__dirname, "src", "wrapper.js"),
     },
-    resolve: {
-        alias: {
-            LivemapSocketController: path.resolve(__dirname, "src", "sockets.js"),
-            LivemapEventsWrapper: path.resolve(__dirname, "src", "wrapper.js")
-        }
-    },
-    plugins: [
-        new webpack.DefinePlugin({ "global.GENTLY": false })
-    ],
-    optimization: {
-        minimize: false
-    },
-    target: "node"
+  },
+  plugins: [new webpack.DefinePlugin({ "global.GENTLY": false })],
+  optimization: {
+    minimize: false,
+  },
+  target: "node",
 };
 
 module.exports = config;

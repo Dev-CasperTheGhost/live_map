@@ -18,7 +18,7 @@ async function checkForUpdate() {
     actualVersion = json["live_map"];
 
     if (actualVersion !== currentVersion) {
-      console.info("LIVE_MAP: Please update your live_map addon");
+      console.warn("LIVE_MAP: Please update your live_map addon");
     } else {
       console.info("LIVE_MAP: live_map is up to date!");
     }

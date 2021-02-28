@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@citizenfx/client/natives_universal.d.ts" />
+/// <reference path="../../node_modules/@citizenfx/client/natives_universal.d.ts" />
 
 const STREET_HASHES = {
   [String(GetHashKey("ABBATAVE"))]: "Abattoir Ave",

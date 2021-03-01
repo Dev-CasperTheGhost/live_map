@@ -17,27 +17,39 @@ const EventsWrapper = (SocketController) => {
   });
 
   onNet("livemap:playerSpawned", () => {
-    setStaticData(source, GetPlayerIdentifier(source));
+    const ids = getAllIdentifersJSON(source);
+
+    setStaticData(source, ids["steam"]);
   });
 
   onNet("livemap:AddPlayerData", (key, data) => {
-    SocketController.AddPlayerData(GetPlayerIdentifier(source, 0), key, data);
+    const ids = getAllIdentifersJSON(source);
+
+    SocketController.AddPlayerData(ids["steam"], key, data);
   });
 
   onNet("livemap:UpdatePlayerData", (key, data) => {
-    SocketController.UpdatePlayerData(GetPlayerIdentifier(source, 0), key, data);
+    const ids = getAllIdentifersJSON(source);
+
+    SocketController.UpdatePlayerData(ids["steam"], key, data);
   });
 
   onNet("livemap:RemovePlayerData", (key) => {
-    SocketController.RemovePlayerData(GetPlayerIdentifier(source, 0), key);
+    const ids = getAllIdentifersJSON(source);
+
+    SocketController.RemovePlayerData(ids["steam"], key);
   });
 
   onNet("livemap:RemovePlayer", () => {
-    SocketController.RemovePlayer(GetPlayerIdentifier(source, 0));
+    const ids = getAllIdentifersJSON(source);
+
+    SocketController.RemovePlayer(ids["steam"]);
   });
 
   onNet("playerDropped", () => {
-    SocketController.RemovePlayer(GetPlayerIdentifier(source, 0));
+    const ids = getAllIdentifersJSON(source);
+
+    SocketController.RemovePlayer(ids["steam"]);
   });
 
   // Internal events for server-side scripts. See https://github.com/TGRHavoc/live_map/issues/45
@@ -59,5 +71,16 @@ const EventsWrapper = (SocketController) => {
 
   return {};
 };
+
+// Thanks to DaRealSh0T
+function getAllIdentifersJSON(playerSrc) {
+  const json = {};
+  for (let i = 0; i < GetNumPlayerIdentifiers(playerSrc); i++) {
+    let str = GetPlayerIdentifier(playerSrc, i);
+    let split = str.split(":");
+    json[split[0]] = str;
+  }
+  return json;
+}
 
 module.exports = EventsWrapper;

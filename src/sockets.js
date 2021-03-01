@@ -76,7 +76,7 @@ const SocketController = (access) => {
     playerData[identifier][key] = data;
   };
   const RemovePlayerData = (identifier, key) => {
-    if (!checkInputs(identifier, key, "s")) {
+    if (!checkInputs(identifier, key)) {
       return;
     }
     makeSurePlayerExists(identifier);

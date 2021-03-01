@@ -19,37 +19,37 @@ const EventsWrapper = (SocketController) => {
   onNet("livemap:playerSpawned", () => {
     const ids = getAllIdentifersJSON(source);
 
-    setStaticData(source, ids["steam"]);
+    setStaticData(source, ids["steam"] || ids["license"]);
   });
 
   onNet("livemap:AddPlayerData", (key, data) => {
     const ids = getAllIdentifersJSON(source);
 
-    SocketController.AddPlayerData(ids["steam"], key, data);
+    SocketController.AddPlayerData(ids["steam"] || ids["license"], key, data);
   });
 
   onNet("livemap:UpdatePlayerData", (key, data) => {
     const ids = getAllIdentifersJSON(source);
 
-    SocketController.UpdatePlayerData(ids["steam"], key, data);
+    SocketController.UpdatePlayerData(ids["steam"] || ids["license"], key, data);
   });
 
   onNet("livemap:RemovePlayerData", (key) => {
     const ids = getAllIdentifersJSON(source);
 
-    SocketController.RemovePlayerData(ids["steam"], key);
+    SocketController.RemovePlayerData(ids["steam"] || ids["license"], key);
   });
 
   onNet("livemap:RemovePlayer", () => {
     const ids = getAllIdentifersJSON(source);
 
-    SocketController.RemovePlayer(ids["steam"]);
+    SocketController.RemovePlayer(ids["steam"] || ids["license"]);
   });
 
   onNet("playerDropped", () => {
     const ids = getAllIdentifersJSON(source);
 
-    SocketController.RemovePlayer(ids["steam"]);
+    SocketController.RemovePlayer(ids["steam"] || ids["license"]);
   });
 
   // Internal events for server-side scripts. See https://github.com/TGRHavoc/live_map/issues/45

@@ -86,10 +86,10 @@ exports(
     }
 
     const name = WEAPON_HASHES[hash];
-    if (name !== null) {
-      return name;
-    } else {
+    if (!name) {
       return "Unarmed";
+    } else {
+      return name;
     }
   })
 );

@@ -473,7 +473,7 @@ exports(
 
     const name = STREET_HASHES[hash];
 
-    if (name) {
+    if (name !== undefined) {
       return name;
     } else {
       const backup = OTHER_STREET_HASHES[hash];

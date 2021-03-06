@@ -1,5 +1,20 @@
 /// <reference path="../node_modules/@citizenfx/client/natives_universal.d.ts" />
 
+const POLICE_VEHICLES = [
+  GetHashKey("police"),
+  GetHashKey("police2"),
+  GetHashKey("police3"),
+  GetHashKey("police4"),
+  GetHashKey("policeold2"),
+  GetHashKey("policeold1"),
+  GetHashKey("policet"),
+  GetHashKey("policeb"),
+  GetHashKey("riot"),
+  GetHashKey("sheriff"),
+  GetHashKey("sheriff2"),
+  GetHashKey("pranger"),
+];
+
 const DEFAULT_STATE = {
   pos: { x: 0, y: 0, z: 0 },
   Vehicle: "On foot",
@@ -14,6 +29,7 @@ const temp = {
   zone: null,
   area: null,
   weapon: null,
+  icon: 6,
 };
 
 let beenUpdated = [];
@@ -25,7 +41,7 @@ function updateData(key, value) {
 }
 
 function UpdateVehicle() {
-  const vehicleId = GetVehiclePedIsIn(PlayerPedId(), true);
+  const vehicleId = GetVehiclePedIsIn(PlayerPedId(), false);
 
   if (temp["vehicleId"] !== vehicleId && vehicleId !== 0) {
     const vehicleHash = GetHashKey(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleId)));
@@ -42,6 +58,24 @@ function UpdateVehicle() {
 
   if (DEFAULT_STATE["License Plate"] !== plate) {
     updateData("License plate", plate);
+  }
+
+  if (temp["icon"] !== vehicleId) {
+    const vehicleModel = GetEntityModel(temp["vehicleId"]);
+
+    if (POLICE_VEHICLES.includes(vehicleModel)) {
+      updateData("icon", 5);
+      return (temp["icon"] = 5);
+    } else if (vehicleModel === GetHashKey("ambulance")) {
+      updateData("icon", 3);
+      return (temp["icon"] = 3);
+    } else if (vehicleModel === GetHashKey("firetruk")) {
+      updateData("icon", 4);
+      return (temp["icon"] = 4);
+    } else {
+      updateData("icon", 6);
+      return (temp["icon"] = 6);
+    }
   }
 }
 

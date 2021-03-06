@@ -464,10 +464,10 @@ exports(
 
     const name = VEHICLE_HASHES[hash];
 
-    if (name !== null) {
+    if (!name) {
+      return "Unkown vehicle";
+    } else {
       return name;
     }
-
-    return "Unkown vehicle";
   })
 );

@@ -98,10 +98,10 @@ exports(
     }
 
     const name = ZONE_HASHES[hash];
-    if (name !== null) {
-      return name;
-    } else {
+    if (!name) {
       return "Unknown zone";
+    } else {
+      return name;
     }
   })
 );

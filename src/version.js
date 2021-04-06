@@ -1,5 +1,4 @@
-/// <reference path="../node_modules/@citizenfx/server/natives_server.d.ts" />
-const fetch = require("node-fetch");
+const axios = require("axios");
 
 const url = "https://dev-caspertheghost.github.io/version.html";
 let currentVersion = null;
@@ -7,15 +6,15 @@ let actualVersion = null;
 
 async function checkForUpdate() {
   try {
-    const res = await fetch(url, {
+    const { data } = await axios({
+      url,
       method: "GET",
       headers: {
         "Content-Type": "text/html",
       },
     });
-    const json = await res.json();
 
-    actualVersion = json["live_map"];
+    actualVersion = data["live_map"];
 
     if (actualVersion !== currentVersion) {
       console.warn("LIVE_MAP: Please update your live_map addon");

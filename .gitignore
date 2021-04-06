@@ -1,10 +1,7 @@
 
 node_modules/
-
-dist/livemap.js
-yarn.lock
-.yarn.installed
-
-obj/
-_site
 .vscode
+
+# build, this will be created into a .zip and uploaded to the releases tab.
+live_map
+live_map.zip

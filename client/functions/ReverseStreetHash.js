@@ -464,24 +464,21 @@ const OTHER_STREET_HASHES = {
   "0x96b41893": "Zancudo Rd",
 };
 
-exports(
-  "ReverseStreetHash",
-  (ReverseStreetHash = (hash) => {
-    if (typeof hash !== "string") {
-      hash = String(hash);
+module.exports = (hash) => {
+  if (typeof hash !== "string") {
+    hash = String(hash);
+  }
+
+  const name = STREET_HASHES[hash];
+
+  if (name !== undefined) {
+    return name;
+  } else {
+    const backup = OTHER_STREET_HASHES[hash];
+    if (backup) {
+      return backup;
     }
 
-    const name = STREET_HASHES[hash];
-
-    if (name !== undefined) {
-      return name;
-    } else {
-      const backup = OTHER_STREET_HASHES[hash];
-      if (backup) {
-        return backup;
-      }
-
-      return "Uknown Street";
-    }
-  })
-);
+    return "Uknown Street";
+  }
+};

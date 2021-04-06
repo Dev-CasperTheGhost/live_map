@@ -1,4 +1,8 @@
 /// <reference path="../node_modules/@citizenfx/client/natives_universal.d.ts" />
+const ReverseStreetHash = require("./functions/ReverseStreetHash");
+const ReverseVehicleHash = require("./functions/ReverseVehicleHash");
+const ReverseWeaponHash = require("./functions/ReverseWeaponHash");
+const ReverseZoneHash = require("./functions/ReverseZoneHash");
 
 const POLICE_VEHICLES = [
   GetHashKey("police"),
@@ -45,7 +49,7 @@ function UpdateVehicle() {
 
   if (temp["vehicleId"] !== vehicleId && vehicleId !== 0) {
     const vehicleHash = GetHashKey(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleId)));
-    const vehicleName = exports[GetCurrentResourceName()].ReverseVehicleHash(vehicleHash);
+    const vehicleName = ReverseVehicleHash(vehicleHash);
 
     updateData("Vehicle", vehicleName);
     temp["vehicleId"] = vehicleId;
@@ -106,11 +110,9 @@ setImmediate(() => {
         updateData("pos", { x, y, z });
 
         const [hash] = GetStreetNameAtCoord(x, y, z);
-        const streetName = exports[GetCurrentResourceName()].ReverseStreetHash(hash);
+        const streetName = ReverseStreetHash(hash);
 
-        const zone = exports[GetCurrentResourceName()].ReverseZoneHash(
-          GetHashKey(GetNameOfZone(x, y, z))
-        );
+        const zone = ReverseZoneHash(GetHashKey(GetNameOfZone(x, y, z)));
 
         if (temp["streetName"] !== streetName || temp["zone"] !== zone) {
           const locationString = `${streetName}, ${zone}`;
@@ -124,7 +126,7 @@ setImmediate(() => {
       //? UPDATE_WEAPONS
       const [found, weapon] = GetCurrentPedWeapon(PlayerPedId(), true);
       if (found && temp["weapon"] !== weapon) {
-        const weaponName = exports[GetCurrentResourceName()].ReverseWeaponHash(weapon);
+        const weaponName = ReverseWeaponHash(weapon);
 
         updateData("Weapon", weaponName);
 

@@ -9,7 +9,7 @@ web interface.
 
 ## How to install
 
-Download the ZIP file. And extract the contents into `resources/live_map/`.
+Download the ZIP file from [the releases tab](https://github.com/Dev-CasperTheGhost/live_map/releases). And extract the contents into `resources/live_map/`.
 
 Add the following to your server.cfg file.
 
@@ -20,17 +20,16 @@ set livemap_access_control "*"
 start live_map
 ```
 
-**Warning:** When starting `live_map` for the first time, it might take a few minutes for yarn to completely finish building!
-
 ## Configuration
 
 ### Convars
 
 The following convars are available for you to change
 
-| Name        | Type | Default Value | Description                                      |
-| ----------- | ---- | ------------- | ------------------------------------------------ |
-| socket_port | int  | 30121         | Sets the port the socket server should listen on |
+| Name                   | Type   | Default Value | Description                                      |
+| ---------------------- | ------ | ------------- | ------------------------------------------------ |
+| socket_port            | number | 30121         | Sets the port the socket server should listen on |
+| livemap_access_control | string | \*            | Soon                                             |
 
 ## Events
 

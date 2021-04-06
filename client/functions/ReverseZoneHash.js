@@ -90,18 +90,15 @@ const ZONE_HASHES = {
   [String(GetHashKey("ZQ_UAR"))]: "Davis Quartz",
 };
 
-exports(
-  "ReverseZoneHash",
-  (ReverseZoneHash = (hash) => {
-    if (typeof hash !== "string") {
-      hash = String(hash);
-    }
+module.exports = (hash) => {
+  if (typeof hash !== "string") {
+    hash = String(hash);
+  }
 
-    const name = ZONE_HASHES[hash];
-    if (!name) {
-      return "Unknown zone";
-    } else {
-      return name;
-    }
-  })
-);
+  const name = ZONE_HASHES[hash];
+  if (!name) {
+    return "Unknown zone";
+  } else {
+    return name;
+  }
+};

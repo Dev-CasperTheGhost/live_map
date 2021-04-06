@@ -1,23 +1,46 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const config = {
-  entry: "./src/server.js",
+function getEntry(isServer) {
+  return isServer ? "./src/server.js" : "./client/client.js";
+}
+
+function getFilename(isServer) {
+  return isServer ? "server.js" : "client.js";
+}
+
+function getOutputPath(isServer) {
+  return isServer
+    ? path.resolve(__dirname, "live_map", "server")
+    : path.resolve(__dirname, "live_map", "client");
+}
+
+function getPlugins(isServer) {
+  return isServer ? [new webpack.DefinePlugin({ "global.GENTLY": false })] : [];
+}
+
+const config = (isServer) => ({
+  entry: getEntry(isServer),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "livemap.js",
+    filename: getFilename(isServer),
+    path: getOutputPath(isServer),
   },
   resolve: {
+    extensions: [".js"],
     alias: {
       LivemapSocketController: path.resolve(__dirname, "src", "sockets.js"),
       LivemapEventsWrapper: path.resolve(__dirname, "src", "wrapper.js"),
     },
   },
-  plugins: [new webpack.DefinePlugin({ "global.GENTLY": false })],
   optimization: {
     minimize: false,
   },
-  target: "node",
-};
+  target: isServer ? "node" : undefined,
+  plugins: [
+    new webpack.ContextReplacementPlugin(/any-promise|node-fetch/),
+    ...getPlugins(isServer),
+  ],
+  mode: "production",
+});
 
-module.exports = config;
+module.exports = [config(true), config(false)];

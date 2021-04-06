@@ -78,18 +78,15 @@ const WEAPON_HASHES = {
   ["419712736"]: "Wrench",
 };
 
-exports(
-  "ReverseWeaponHash",
-  (ReverseWeaponHash = (hash) => {
-    if (typeof hash !== "string") {
-      hash = String(hash);
-    }
+module.exports = (hash) => {
+  if (typeof hash !== "string") {
+    hash = String(hash);
+  }
 
-    const name = WEAPON_HASHES[hash];
-    if (!name) {
-      return "Unarmed";
-    } else {
-      return name;
-    }
-  })
-);
+  const name = WEAPON_HASHES[hash];
+  if (!name) {
+    return "Unarmed";
+  } else {
+    return name;
+  }
+};

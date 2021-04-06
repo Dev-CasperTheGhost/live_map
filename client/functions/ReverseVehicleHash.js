@@ -455,19 +455,16 @@ const VEHICLE_HASHES = {
   [String(GetHashKey("ztype"))]: "Z-Type",
 };
 
-exports(
-  "ReverseVehicleHash",
-  (ReverseVehicleHash = (hash) => {
-    if (typeof hash !== "string") {
-      hash = String(hash);
-    }
+module.exports = (hash) => {
+  if (typeof hash !== "string") {
+    hash = String(hash);
+  }
 
-    const name = VEHICLE_HASHES[hash];
+  const name = VEHICLE_HASHES[hash];
 
-    if (!name) {
-      return "Unkown vehicle";
-    } else {
-      return name;
-    }
-  })
-);
+  if (!name) {
+    return "Unkown vehicle";
+  } else {
+    return name;
+  }
+};

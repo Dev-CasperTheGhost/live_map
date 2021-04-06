@@ -19,7 +19,6 @@ router.use(async (ctx, next) => {
 const SocketController = require("LivemapSocketController")(access);
 SocketController.hook(wss);
 
-// TODO: fix this.
 // require("./version");
 require("LivemapEventsWrapper")(SocketController);
 

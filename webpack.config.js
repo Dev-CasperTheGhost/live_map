@@ -37,7 +37,7 @@ const config = (isServer) => ({
   },
   target: isServer ? "node" : undefined,
   plugins: [
-    new webpack.ContextReplacementPlugin(/any-promise|node-fetch/),
+    new webpack.ContextReplacementPlugin(/any-promise/),
     ...getPlugins(isServer),
   ],
   mode: "production",

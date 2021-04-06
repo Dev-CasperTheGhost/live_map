@@ -9,7 +9,7 @@ web interface.
 
 ## How to install
 
-Download the ZIP file from [the releases tab](https://github.com/Dev-CasperTheGhost/live_map/releases). And extract the contents into `resources/live_map/`.
+Download the `live_map.zip` file from [the releases tab](https://github.com/Dev-CasperTheGhost/live_map/releases). And extract the contents into `resources/live_map/`.
 
 Add the following to your server.cfg file.
 

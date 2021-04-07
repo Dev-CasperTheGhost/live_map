@@ -1,6 +1,6 @@
 {
     "name": "fivem-live_map",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "The FiveM resource to get Havoc's LiveMap working",
     "main": "src/server.js",
     "scripts": {
@@ -20,6 +20,7 @@
     "dependencies": {
         "@citizenfx/client": "^2.0.3777-1",
         "@citizenfx/server": "^2.0.3777-1",
+        "axios": "^0.21.1",
         "koa": "^2.13.1",
         "koa-body": "^4.2.0",
         "koa-router": "^10.0.0",
